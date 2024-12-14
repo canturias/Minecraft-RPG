@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using Mobs;
+using Names;
 
 class Program {
     static void Main() {
@@ -16,7 +17,7 @@ class Program {
             Console.Clear();
             Console.WriteLine("Minecraft RPG (Beta)\n");
 
-            string name = "Juan";
+            string name = Name.ValidNames[random.Next(Name.ValidNames.Length)];
             int health, damage;
 
             if(!isPassive) {
