@@ -7,12 +7,11 @@ using Names;
 
 class Program {
     static void Main() {
-        Console.Title = "Minecraft RPG (v1.0)";
+        Console.Title = "Minecraft RPG";
         Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine($"Minecraft RPG – Score: 0\n");
         Console.ResetColor();
 
-        // Player Creation
         Player player = new Player();
         string? username = null;
         while (string.IsNullOrEmpty(username) || username!.Length < 3 || !Regex.IsMatch(username, @"^[a-zA-Z0-9]+$"))  {
@@ -37,8 +36,6 @@ class Program {
             }
         } player.Name = username;
         Console.Clear();
-        
-        // Player Creation
 
         Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine($"Minecraft RPG – Score: 0\n");
@@ -47,7 +44,6 @@ class Program {
 
         Random random = new Random();
         bool isPassive = false;
-        // Legend();
         Wait("to roam around the forest");
 
         int score = 0;
@@ -57,8 +53,6 @@ class Program {
             Console.WriteLine($"Minecraft RPG – Score: {score}\n");
             Console.ResetColor();
             player.DisplayStats();
-
-            // Legend();
 
             string name = Name.ValidNames[random.Next(Name.ValidNames.Length)];
             int health, damage;
@@ -105,8 +99,8 @@ class Program {
                 Console.WriteLine("Press 'A' to attack normally.");
                 Console.WriteLine("Press 'C' to attempt a critcal attack.\n");
                 
-                // Hostile encounter
                 int attempts = 0;
+
                 while (hostile.HealthPoints > 0 && player.Health > 0) {
                     ConsoleKeyInfo input = Console.ReadKey(true);
                     int criticalBonus = 0;
@@ -116,7 +110,6 @@ class Program {
 
                         int num1 = critical.Next(1, 101);
                         int num2 = critical.Next(1, 101);
-
                         char[] operators = {'+', '-', '*'};
 
                         char operatorChar = operators[critical.Next(operators.Length)];
@@ -133,7 +126,6 @@ class Program {
                         }
 
                         Console.Write($"{num1} {operatorChar} {num2} = ");
-                        
                         string? userAnswer = Console.ReadLine();
 
                         if (int.TryParse(userAnswer, out int parsedAnswer)) {
@@ -170,7 +162,6 @@ class Program {
                     Console.WriteLine(". ");
 
                     if (criticalBonus == 1) {
-                        
                         Console.WriteLine($"You attack {hostile.Name} the {hostile.Type} dealing {playerDamage} HP of damage + a 6 HP critical bonus!");
                         hostile.HealthPoints -= playerDamage + 6;
                     }
@@ -224,7 +215,6 @@ class Program {
                         score++;
                         Wait("to roam around the forest");
                     }
-                    
                 }
             } else {
                 string type = Mob.ValidPassiveTypes[random.Next(Mob.ValidPassiveTypes.Length)];
@@ -305,48 +295,15 @@ class Program {
                         passive.DisplayInfo();
                         Console.WriteLine("Press 'A' to attack normally.");
                         Console.ReadKey(true);
-                    }
-                    
+                    }  
                 }
-
             }
             isPassive = random.Next(3) == 0;
-            
         }
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.Write("Game Over! You have been defeated.");
+        Console.WriteLine("Game Over! You have been defeated.");
+        Console.Write("Final score: " + score);
         Console.ReadKey();
-    }
-
-    static void Legend() {
-        Console.ForegroundColor = ConsoleColor.DarkMagenta;
-        Console.Write($"(Legend)\n");
-        Console.ResetColor();
-        Console.Write($"Mob ID: ");
-        Console.ForegroundColor = ConsoleColor.White;
-        Console.Write($"A unique string to identify a specific Mob object.\n");
-        Console.ResetColor();
-        Console.Write($"Name: ");
-        Console.ForegroundColor = ConsoleColor.White;
-        Console.Write($"A display name for the Mob.\n");
-        Console.ResetColor();
-        Console.Write($"Type: ");
-        Console.ForegroundColor = ConsoleColor.White;
-        Console.Write($"The type of the Hostile/Passive Mob.\n");
-        Console.ResetColor();
-        Console.Write($"Health Points: ");
-        Console.ForegroundColor = ConsoleColor.White;
-        Console.Write($"The current amount of health the Mob has.\n");
-        Console.ResetColor();
-        Console.Write($"Health Drops: ");
-        Console.ForegroundColor = ConsoleColor.White;
-        Console.Write($"The amount of health the Mob gives the Player after being killed.\n");
-        Console.ResetColor();
-        Console.Write($"Damage: ");
-        Console.ForegroundColor = ConsoleColor.White;
-        Console.Write($"The amount of damage the Mob deals to the player in a turn.\n");
-        Console.ResetColor();
-        Console.Write($"\n");
     }
 
     static void Wait(string message) {
