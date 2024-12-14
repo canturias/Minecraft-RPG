@@ -1,85 +1,77 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Minecraft_Terminal_Edition {
-    class Program {
-        private int Score;
-        static void Wait() {
-            Console.Write("Press any key to continue . . .");
-            Console.ReadKey(true);
-        }
+using Mobs;
 
-        static void Main(string[] args) {
-            Console.Title = "Minecraft: Terminal Edition";
+class Program {
+    static void Main() {
+        Console.Title = "Minecraft RPG (Beta)";
+        List<Mob> Mobs = new List<Mob>();
+        Random random = new Random();
+        bool isPassive = false;
+        Console.WriteLine("Minecraft RPG (Beta)\n");
+        Wait("create a new random object");
 
-            int a = 0;
-            List<Mob> mobs = new List<Mob>();
-
-            Random random = new Random();
-            Console.WriteLine("Press enter . . .");
-            Console.ReadKey(true);
+        while(true) {
             Console.Clear();
+            Console.WriteLine("Minecraft RPG (Beta)\n");
 
-            bool isItem = false;
-            bool isPassive = false;
-            while (true) {
-                if (isItem) {
-                    Console.WriteLine("You found an item!\n");
-                }
-                else {
-                    string name = "Juan";
-                    int health, damage, heal;
+            string name = "Juan";
+            int health, damage;
 
-                    if (!isPassive) {
-                        string type = Mob.ValidHostileTypes[random.Next(Mob.ValidHostileTypes.Length)];
-                        switch (type) {
-                            case "Zombie":
-                                health = random.Next(18, 23);
-                                damage = random.Next(1, 4);
-                                break;
-                            case "Skeleton":
-                                health = random.Next(18, 23);
-                                damage = random.Next(0, 4);
-                                break;
-                            case "Spider":
-                                health = random.Next(14, 18);
-                                damage = random.Next(2, 5);
-                                break;
-                            default:
-                                health = 15;
-                                damage = 1;
-                                break;
-                        }
-                        heal = health / 3 + 1;
-                        mobs.Add(new Hostile(name, type, health, heal, damage));
-                    }
-                    else {
-                        string type = Mob.ValidPassiveTypes[random.Next(Mob.ValidPassiveTypes.Length)];
-                        switch (type) {
-                            case "Pig":
-                                health = random.Next(10, 13);
-                                break;
-                            case "Chicken":
-                                health = random.Next(4, 7);
-                                break;
-                            case "Cow":
-                                health = random.Next(10, 13);
-                                break;
-                            default:
-                                health = 5;
-                                break;
-                        }
-                        heal = health / 2 + 1;
-                        mobs.Add(new Passive(name, type, health, heal));
-                    }
-                    
-                    mobs[a].DisplayInfo();
-                    a++;
+            if(!isPassive) {
+                string type = Mob.ValidHostileTypes[random.Next(Mob.ValidHostileTypes.Length)];
+                switch (type) {
+                    case "Zombie":
+                        health = random.Next(18, 23);
+                        damage = random.Next(1, 4);
+                        break;
+                    case "Skeleton":
+                        health = random.Next(18, 23);
+                        damage = random.Next(0, 4);
+                        break;
+                    case "Spider":
+                        health = random.Next(14, 18);
+                        damage = random.Next(2, 5);
+                        break;
+                    default:
+                        health = 15;
+                        damage = 1;
+                        break;
                 }
-                isItem = random.Next(7) == 0;
-                isPassive = random.Next(3) == 0;
-                Console.ReadKey(true);
+                Mobs.Add(new Hostile(name, type, health, damage));
+            } else {
+                string type = Mob.ValidPassiveTypes[random.Next(Mob.ValidPassiveTypes.Length)];
+                switch (type) {
+                    case "Pig":
+                        health = random.Next(10, 13);
+                        break;
+                    case "Chicken":
+                        health = random.Next(4, 7);
+                        break;
+                    case "Cow":
+                        health = random.Next(10, 13);
+                        break;
+                    default:
+                        health = 5;
+                        break;
+                }
+                Mobs.Add(new Passive(name, type, health));
             }
+            isPassive = random.Next(3) == 0;
+        
+            for(int i = 0; i < Mobs.Count; i++) {
+               Mobs[i].DisplayInfo();
+            }
+
+            Wait("create a new random object");
         }
+    }
+
+    static void Wait(string message) {
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.Write($"Press any key to {message} . . .");
+        Console.ResetColor();
+        Console.ReadKey(true);
     }
 }
