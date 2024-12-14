@@ -10,12 +10,12 @@ class Program {
         List<Mob> Mobs = new List<Mob>();
         Random random = new Random();
         bool isPassive = false;
-        Console.WriteLine("Minecraft RPG (Beta)\n");
+        Legend();
         Wait("create a new random object");
 
         while(true) {
             Console.Clear();
-            Console.WriteLine("Minecraft RPG (Beta)\n");
+            Legend();
 
             string name = Name.ValidNames[random.Next(Name.ValidNames.Length)];
             int health, damage;
@@ -67,6 +67,37 @@ class Program {
 
             Wait("create a new random object");
         }
+    }
+
+    static void Legend() {
+        Console.ForegroundColor = ConsoleColor.DarkMagenta;
+        Console.Write($"(Legend)\n");
+        Console.ResetColor();
+        Console.Write($"Mob ID: ");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.Write($"A unique string to identify a specific Mob object.\n");
+        Console.ResetColor();
+        Console.Write($"Name: ");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.Write($"A display name for the Mob.\n");
+        Console.ResetColor();
+        Console.Write($"Type: ");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.Write($"The type of the Hostile/Passive Mob.\n");
+        Console.ResetColor();
+        Console.Write($"Health Points: ");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.Write($"The current amount of health the Mob has.\n");
+        Console.ResetColor();
+        Console.Write($"Health Drops: ");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.Write($"The amount of health the Mob gives the Player after being killed.\n");
+        Console.ResetColor();
+        Console.Write($"Damage: ");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.Write($"The amount of damage the Mob deals to the player in a turn.\n");
+        Console.ResetColor();
+        Console.Write($"\n");
     }
 
     static void Wait(string message) {
