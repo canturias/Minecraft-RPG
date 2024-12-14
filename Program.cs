@@ -1,112 +1,85 @@
 ﻿using System;
 using System.Collections.Generic;
 
-class Mob {
-    public string Name { get; private set; }
-    public string Type { get; private set; }
-    public int HealthPoints { get; private set; }
+namespace Minecraft_Terminal_Edition {
+    class Program {
+        private int Score;
+        static void Wait() {
+            Console.Write("Press any key to continue . . .");
+            Console.ReadKey(true);
+        }
 
-    public Mob(string name, string type, int healthPoints) {
-        Name = name;
-        Type = type;
-        HealthPoints = healthPoints;
-    }
-    
-    public virtual void DisplayInfo() {
-        Console.WriteLine("Name: " + Name);
-        Console.WriteLine("Type: " + Type);
-        Console.WriteLine("Health Points: " + HealthPoints + " HP");
-    }
-}
+        static void Main(string[] args) {
+            Console.Title = "Minecraft: Terminal Edition";
 
-class Hostile : Mob {
-    public int Damage { get; private set; }
-    
-    public Hostile(string name, string type, int healthPoints, int damage)
-    :base(name, type, healthPoints) {
-        Damage = damage;    
-    }
-    
-    public override void DisplayInfo() {
-        Console.ForegroundColor = ConsoleColor.DarkRed;
-        Console.WriteLine("(New Hostile)");
-        Console.ResetColor();
-        base.DisplayInfo();
-        Console.WriteLine("Damage: " + Damage  + " ATK");
-        Console.WriteLine();
-    }
+            int a = 0;
+            List<Mob> mobs = new List<Mob>();
 
-}
+            Random random = new Random();
+            Console.WriteLine("Press enter . . .");
+            Console.ReadKey(true);
+            Console.Clear();
 
-class Passive : Mob {
-    public int HealthDrops { get; private set; }
+            bool isItem = false;
+            bool isPassive = false;
+            while (true) {
+                if (isItem) {
+                    Console.WriteLine("You found an item!\n");
+                }
+                else {
+                    string name = "Juan";
+                    int health, damage, heal;
 
-    public Passive(string name, string type, int healthPoints, int healthDrops)
-    :base(name, type, healthPoints) {
-        HealthDrops = healthDrops;    
-    }
-    
-    public override void DisplayInfo() {
-        Console.ForegroundColor = ConsoleColor.DarkGreen;
-        Console.WriteLine("(New Passive)");
-        Console.ResetColor();
-        base.DisplayInfo();
-        Console.WriteLine("Health Drops: " + HealthDrops + " HP");
-        Console.WriteLine();
-    }
-}
-
-class Neutral : Mob {
-    public int Damage { get; private set; }
-    public bool IsAggressive { get; private set;}
-
-    public Neutral(string name, string type, int healthPoints, int damage, bool isAggressive)
-    :base(name, type, healthPoints) {
-        Damage = damage;
-        IsAggressive = isAggressive;
-    }
-    
-    public override void DisplayInfo() {
-        Console.ForegroundColor = ConsoleColor.DarkYellow;
-        Console.WriteLine("(New Neutral)");
-        Console.ResetColor();
-        base.DisplayInfo();
-        Console.WriteLine("Damage: " + Damage + " ATK");
-        Console.WriteLine("Aggressive: " + IsAggressive);
-        Console.WriteLine();
-    }
-}
-
-class Program {
-    static void Main(string[] args) {
-        Console.Title = "Minecraft: Terminal Edition (Beta)";
-
-        Mob test001 = new Hostile(
-            "Chris",
-            "Creeper",
-            20,
-            100
-        );
-
-        Mob test002 = new Passive(
-            "Jerome",
-            "Chicken",
-            4,
-            2
-        );
-
-        Mob test003 = new Neutral(
-            "Darryl",
-            "Enderman",
-            40,
-            4,
-            false
-        );
-        
-        test001.DisplayInfo();
-        test002.DisplayInfo();
-        test003.DisplayInfo();
-
-        Console.ReadKey();
+                    if (!isPassive) {
+                        string type = Mob.ValidHostileTypes[random.Next(Mob.ValidHostileTypes.Length)];
+                        switch (type) {
+                            case "Zombie":
+                                health = random.Next(18, 23);
+                                damage = random.Next(1, 4);
+                                break;
+                            case "Skeleton":
+                                health = random.Next(18, 23);
+                                damage = random.Next(0, 4);
+                                break;
+                            case "Spider":
+                                health = random.Next(14, 18);
+                                damage = random.Next(2, 5);
+                                break;
+                            default:
+                                health = 15;
+                                damage = 1;
+                                break;
+                        }
+                        heal = health / 3 + 1;
+                        mobs.Add(new Hostile(name, type, health, heal, damage));
+                    }
+                    else {
+                        string type = Mob.ValidPassiveTypes[random.Next(Mob.ValidPassiveTypes.Length)];
+                        switch (type) {
+                            case "Pig":
+                                health = random.Next(10, 13);
+                                break;
+                            case "Chicken":
+                                health = random.Next(4, 7);
+                                break;
+                            case "Cow":
+                                health = random.Next(10, 13);
+                                break;
+                            default:
+                                health = 5;
+                                break;
+                        }
+                        heal = health / 2 + 1;
+                        mobs.Add(new Passive(name, type, health, heal));
+                    }
+                    
+                    mobs[a].DisplayInfo();
+                    a++;
+                }
+                isItem = random.Next(7) == 0;
+                isPassive = random.Next(3) == 0;
+                Console.ReadKey(true);
+            }
+        }
     }
 }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Minecraft RPG")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9ebd72f5e6bd688ebd37ef26fef348c843c9e19a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9e10780887cbcbc0e0f816a1f6614d531c093a15")]
 [assembly: System.Reflection.AssemblyProductAttribute("Minecraft RPG")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Minecraft RPG")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
