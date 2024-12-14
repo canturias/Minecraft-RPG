@@ -1,0 +1,28 @@
+D:\Minecraft RPG\bin\Debug\net8.0\Minecraft RPG.exe
+D:\Minecraft RPG\bin\Debug\net8.0\Minecraft RPG.deps.json
+D:\Minecraft RPG\bin\Debug\net8.0\Minecraft RPG.runtimeconfig.json
+D:\Minecraft RPG\bin\Debug\net8.0\Minecraft RPG.dll
+D:\Minecraft RPG\bin\Debug\net8.0\Minecraft RPG.pdb
+D:\Minecraft RPG\obj\Debug\net8.0\Minecraft RPG.GeneratedMSBuildEditorConfig.editorconfig
+D:\Minecraft RPG\obj\Debug\net8.0\Minecraft RPG.AssemblyInfoInputs.cache
+D:\Minecraft RPG\obj\Debug\net8.0\Minecraft RPG.AssemblyInfo.cs
+D:\Minecraft RPG\obj\Debug\net8.0\Minecraft RPG.csproj.CoreCompileInputs.cache
+D:\Minecraft RPG\obj\Debug\net8.0\Minecraft RPG.dll
+D:\Minecraft RPG\obj\Debug\net8.0\refint\Minecraft RPG.dll
+D:\Minecraft RPG\obj\Debug\net8.0\Minecraft RPG.pdb
+D:\Minecraft RPG\obj\Debug\net8.0\Minecraft RPG.genruntimeconfig.cache
+D:\Minecraft RPG\obj\Debug\net8.0\ref\Minecraft RPG.dll
+d:\Minecraft-RPG\bin\Debug\net8.0\Minecraft RPG.exe
+D:\Minecraft-RPG\bin\Debug\net8.0\Minecraft RPG.deps.json
+D:\Minecraft-RPG\bin\Debug\net8.0\Minecraft RPG.runtimeconfig.json
+d:\Minecraft-RPG\bin\Debug\net8.0\Minecraft RPG.dll
+d:\Minecraft-RPG\bin\Debug\net8.0\Minecraft RPG.pdb
+d:\Minecraft-RPG\obj\Debug\net8.0\Minecraft RPG.GeneratedMSBuildEditorConfig.editorconfig
+d:\Minecraft-RPG\obj\Debug\net8.0\Minecraft RPG.AssemblyInfoInputs.cache
+d:\Minecraft-RPG\obj\Debug\net8.0\Minecraft RPG.AssemblyInfo.cs
+d:\Minecraft-RPG\obj\Debug\net8.0\Minecraft RPG.csproj.CoreCompileInputs.cache
+d:\Minecraft-RPG\obj\Debug\net8.0\Minecraft RPG.dll
+d:\Minecraft-RPG\obj\Debug\net8.0\refint\Minecraft RPG.dll
+d:\Minecraft-RPG\obj\Debug\net8.0\Minecraft RPG.pdb
+D:\Minecraft-RPG\obj\Debug\net8.0\Minecraft RPG.genruntimeconfig.cache
+D:\Minecraft-RPG\obj\Debug\net8.0\ref\Minecraft RPG.dll
