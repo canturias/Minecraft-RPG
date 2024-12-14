@@ -5,7 +5,7 @@ namespace Mobs {
         public string MobID { get; protected set; }
         public string Name { get; private set; }
         public string Type { get; private set; }
-        public int HealthPoints { get; private set; }
+        public int HealthPoints { get; set; }
         public int HealthDrops { get; protected set; }
 
         public static readonly string[] ValidHostileTypes = { "Zombie", "Skeleton", "Spider" };
@@ -24,19 +24,12 @@ namespace Mobs {
         }
 
         public virtual void DisplayInfo() {
-            Console.Write($"Mob ID: {MobID}\n");
-            Console.Write($"Name: ");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.Write($"“{Name}”\n");
+            Console.Write($"{Name} the {Type}\n");
             Console.ResetColor();
-            Console.Write($"Type: {Type}\n");
-            Console.Write($"Health Points: ");
+            Console.Write($"Health: ");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write($"{HealthPoints} HP\n");
-            Console.ResetColor();
-            Console.Write($"Health Drops: ");
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write($"{HealthDrops} HP\n");
             Console.ResetColor();
         }
     }
@@ -54,15 +47,8 @@ namespace Mobs {
         }
 
         public override void DisplayInfo() {
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.Write("(New Hostile Mob)\n");
-            Console.ResetColor();
             base.DisplayInfo();
-            Console.Write($"Damage: ");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write($"{Damage} ATK\n");
-            Console.ResetColor();
-            Console.Write($"\n");
+            Console.WriteLine();
         }
     }
 
@@ -77,11 +63,8 @@ namespace Mobs {
         }
 
         public override void DisplayInfo() {
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("(New Passive Mob)");
-            Console.ResetColor();
             base.DisplayInfo();
-            Console.Write($"\n");
+            Console.WriteLine();
         }
     }
 }
