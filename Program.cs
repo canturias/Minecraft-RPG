@@ -15,7 +15,6 @@ class Program {
         Player player = new Player();
         string? username = null;
         while (string.IsNullOrEmpty(username) || username!.Length < 3 || !Regex.IsMatch(username, @"^[a-zA-Z0-9]+$"))  {
-
             Console.Write("Enter your name: ");
             username = Console.ReadLine();
             if (username!.Length < 2) {

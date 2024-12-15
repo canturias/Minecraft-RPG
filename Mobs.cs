@@ -24,7 +24,6 @@ namespace Mobs {
         }
 
         public virtual void DisplayInfo() {
-            Console.ForegroundColor = ConsoleColor.White;
             Console.Write($"{Name} the {Type}\n");
             Console.ResetColor();
             Console.Write($"Health: ");
@@ -47,6 +46,7 @@ namespace Mobs {
         }
 
         public override void DisplayInfo() {
+            Console.ForegroundColor = ConsoleColor.Red;
             base.DisplayInfo();
             Console.WriteLine();
         }
@@ -63,6 +63,7 @@ namespace Mobs {
         }
 
         public override void DisplayInfo() {
+            Console.ForegroundColor = ConsoleColor.Green;
             base.DisplayInfo();
             Console.WriteLine();
         }
